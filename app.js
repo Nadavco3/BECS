@@ -8,15 +8,16 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
-mongoose.connect('mongodb://localhost:27017/blogDB', {useNewUrlParser: true, useUnifiedTopology: true });
-
-app.use(bodyParser.urlencoded({extended: true}));
-
+app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
+
+//mongoose.connect('mongodb://localhost:27017/blogDB', {useNewUrlParser: true, useUnifiedTopology: true });
+
+
 
 
 app.get("/", function(req,res){
-  res.send("Hello");
+  res.render("recept_normal",{});
 });
 
 
