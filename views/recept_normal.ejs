@@ -3,15 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Blood Reception</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <h1>Blood Bank Of Israel</h1>
+    <div class="box-data">
+        <h3>Remaining blood uints</h3>
+        <label>Type A+: <b><%= Aplus %> </b></label>
+        <label>Type B+: <b><%= Bplus %></b> </label>
+        <label>Type AB+: <b><%= ABplus %></b> </label>
+        <label>Type O+: <b><%= Oplus %></b> </label>
+    </div>
+
+    <div class="row">
     <form action="/addBlood" method="post">
-        <label>A+</label>  <input  name="Aplus"   type="number"   min="0" value="0" autocomplete="off">
-        <label>B+</label>  <input  name="Bplus"   type="number"   min="0" value="0" autocomplete="off">
-        <label>AB+</label> <input  name="ABplus"  type="number"   min="0" value="0" autocomplete="off">
-        <label>O+</label>  <input  name="Oplus"   type="number"   min="0" value="0" autocomplete="off">
-        <button type="submit">Add Blood Transfusion</button>
+        <div class="box-form">
+            <h3>Received blood units</h3>
+            <div class="item">
+                <label >Blood type A+</label>  <input  name="Aplus"   type="number"   min="0" value="0" autocomplete="off"><br> 
+            </div>
+            <div class="item">
+                <label>Blood type B+</label>  <input  name="Bplus"   type="number"   min="0" value="0" autocomplete="off"><br>
+            </div>
+            <div class="item">
+                <label>Blood type AB+</label> <input  name="ABplus"  type="number"   min="0" value="0" autocomplete="off"><br>
+            </div>
+            <div class="item">
+               <label>Blood type O+</label>  <input  name="Oplus"   type="number"   min="0" value="0" autocomplete="off"><br> 
+            </div>
+            <button type="submit">Recieve Blood</button>
+        </div>
     </form>
+    <form action="/giveBlood" method="post">
+        <div class="box-form">
+            <h3>Provide blood units</h3>
+            <div class="item">
+                <label >Blood type A+</label>  <input  name="Aplus"   type="number"   min="0" max="<%= Aplus %>" value="0" autocomplete="off"><br> 
+            </div>
+            <div class="item">
+                <label>Blood type B+</label>  <input  name="Bplus"   type="number"   min="0" max="<%= Bplus %>" value="0" autocomplete="off"><br>
+            </div>
+            <div class="item">
+                <label>Blood type AB+</label> <input  name="ABplus"  type="number"   min="0" value="0" max="<%= ABplus %>" autocomplete="off"><br>
+            </div>
+            <div class="item">
+               <label>Blood type O+</label>  <input  name="Oplus"   type="number"   min="0" value="0" max="<%= Oplus %>" autocomplete="off"><br> 
+            </div>
+            <button type="submit">Provide Blood</button>
+        </div>
+    </form>
+</div>
+<form action="/Emergency" class="Emergency" method="post">
+    <button type="submit">Emergency</button>
+</form>
 </body>
 </html>
