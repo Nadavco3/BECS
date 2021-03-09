@@ -89,6 +89,7 @@ app.get("/", function(req,res){
         res.render("recept_normal",{blood: foundItems});
       }
     } else {
+    } 
     else {
       console.log(err);
     }
