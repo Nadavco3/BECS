@@ -9,7 +9,19 @@
     <h1>A List Of Blood Types To Provide </h1>
     <div class="form-box">
 
+    <div class="box-form">
+        <h3>Blood check list:</h3>
+        <% for (let i = 0; i < blood_list.length; i++) { %>
+            <div class="check-item">
+                <input type="checkbox">
+                <p> Please give "--" units of blood type <%= blood_list[i] %> </p> 
+            </div>
+        <% }  %>
+        <form action="/" method="GET">
+            <button type="submit">Confirm</button>
+        </form>
     </div>
+
     
 </body>
 </html>
