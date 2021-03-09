@@ -1,5 +1,6 @@
 html{
     font-size: 30px;
+    font-size: 20px;
     background-image: url('images/background.jpg');
     background-size: 100%;
 }
@@ -10,6 +11,15 @@ h3{
     margin: 0;
     margin-bottom: 10px;
     padding-top: 5px;
+}
+
+select{
+  width: 150px;
+  font-size: 15px;
+  text-align: center;
+  margin-right: 15px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
 }
 
 
@@ -24,12 +34,23 @@ h3{
     margin-left: -20px;
 }
 
+.provide-box label{
+  margin-left:-10px;
+  margin-right: 5px;
+  width: 150px;
+}
+.qua{
+  width: 80px !important;
+}
+
+
 .item{
     padding-bottom: 10px;
 }
 
 .box-data {
   padding: 10px;
+    padding: 5px;
     text-align: center;
     width: 60%;
     margin: 20px auto;
@@ -43,6 +64,7 @@ h3{
     text-align: center;
     padding-bottom: 20px;
     max-width: 450px;
+    max-width: 600px;
     margin: auto;
     background:whitesmoke;
     border-radius: 5px;
@@ -105,6 +127,7 @@ h3{
     color:#666666;
     font-family:Arial;
     font-size:25px;
+    font-size:15px;
     font-weight:bold;
     padding:6px 24px;
     text-decoration:none;
