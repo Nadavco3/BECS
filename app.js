@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
@@ -12,7 +13,7 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect('mongodb+srv://admin-nadav:123@cluster0.ohzh4.mongodb.net/becsDB', {useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://admin-nadav:"+process.env.DB_PASS+"@cluster0.ohzh4.mongodb.net/becsDB", {useNewUrlParser: true, useUnifiedTopology: true });
 
 const bloodSchema = {
   type: String,
@@ -58,8 +59,7 @@ app.post("/addBlood",async function(req,res){
     bloodType = allBlood[i].type;
     await updateBlood(bloodType,oldAmount,newBloodUnits);
   }
-  const updatedBlood = await Type.find({}).exec();
-  res.render("recept_normal",{blood: updatedBlood});
+  res.redirect("/");
 });
 
 
