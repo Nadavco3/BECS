@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://admin-nadav:"+process.env.DB_PASS+"@cluster0.ohzh4.mongodb.net/becsDB", {useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://admin-nadav:"+process.env.DB_PASS+"@cluster0.ohzh4.mongodb.net/becsDB?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true });
 
 const bloodSchema = {
   type: String,
@@ -142,6 +142,6 @@ function priority(type){
   return ((type.quantity-type.supply)*type.common) / type.donate.length;
 }
 
-app.listen(process.env.PORT, function() {
+app.listen(process.env.PORT || 3000, function() {
   console.log("Server started on port 3000");
 });
