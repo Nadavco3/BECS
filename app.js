@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://admin-nadav:"+process.env.DB_PASS+"@cluster0.ohzh4.mongodb.net/becsDB?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://admin-nadav:123@cluster0.ohzh4.mongodb.net/becsDB", {useNewUrlParser: true, useUnifiedTopology: true });
 
 const bloodSchema = {
   type: String,
