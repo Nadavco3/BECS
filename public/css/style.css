@@ -22,6 +22,12 @@ select{
   border: 2px solid #ccc;
 }
 
+.warning {
+  width: 100% !important;
+  color: red;
+  margin: 0 !important;
+  padding-bottom: 10px;
+}
 
 .box-data label{
   margin-right: 20px;
@@ -39,6 +45,17 @@ select{
   margin-right: 5px;
   width: 150px;
 }
+
+.emergency-box{
+  margin-top: 10px !important;
+  position: relative;
+  top: 150px;
+}
+
+.emergency-box label {
+  width: 70px;
+}
+
 .qua{
   width: 80px !important;
 }
@@ -149,7 +166,7 @@ select{
 
     padding: 10px;
   }
-  
+
   .check-item {
     text-align: center;
     min-height: 40px;
@@ -162,12 +179,12 @@ select{
     text-decoration-thickness: 2px;
     text-decoration-color:black;
   }
-  
+
   input[type="checkbox"] {
     margin-right: 20px;
     margin-left:50px ;
   }
-  
+
   p {
     margin: 0;
     font-weight: 200;

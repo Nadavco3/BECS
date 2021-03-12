@@ -9,9 +9,16 @@
     <h1>Blood Bank Of Israel</h1>
     <div class="box-data">
         <h3>Remaining blood units</h3>
-        <%blood.forEach(function(type){ %>
         <% blood.forEach(function(type){ %>
-          <label><%= type.type %>: <b><%= type.quantity %> </b></label>
+          <% var quantityColor = "black"; %>
+          <% if(type.quantity < 10){ %>
+            <% quantityColor = "red"; %>
+          <% } else if(type.quantity < 20 && type.quantity >= 10) {%>
+                <% quantityColor = "orange"; %>
+              <% } else { %>
+                <% quantityColor = "green"; %>
+              <%}%>
+          <label style="color:<%=quantityColor%>"><%= type.type %>: <b><%= type.quantity %> </b></label>
         <%});%>
 
     </div>
@@ -29,36 +36,40 @@
             <button type="submit">Recieve Blood</button>
         </div>
     </form>
-    <form action="/giveBlood" method="post">
-        <div class="box-form">
-        <div class="box-form provide-box">
-            <h3>Provide blood units</h3>
-            <% blood.forEach(function(type){ %>
-            <div class="item">
-                <label >Blood type <%= type.type %></label>  <input  name=<%= type.name %>   type="number" min="0" max=<%= type.quantity %> value="0" autocomplete="off"><br>
-                <label >Select blood type</label>
-                <select name="bloodSelected" id="select-box">
-                <% blood.forEach(function(type){ %>
-                    <option value=<%= type.type %>> <%= type.type %> </option>>      
-                <% }); %>
-                </select>
-                <label class="qua">Quantity</label>
-                <input  name="bloodAmount"  type="number"  min="0" value="0" autocomplete="off">
-            </div>
-            <% }); %>
+    <div class="col">
+      <form action="/giveBlood" method="post">
 
-            <button type="submit">Provide Blood</button>
+          <div class="box-form provide-box">
+              <h3>Provide blood units</h3>
+              <div class="item">
+                  <label >Select blood type</label>
+                  <select name="bloodSelected" id="select-box">
+                  <% blood.forEach(function(type){ %>
+                      <option value=<%= type.type %>> <%= type.type %> </option>>
+                  <% }); %>
+                  </select>
+                  <label class="qua">Quantity</label>
+                  <input  name="bloodAmount"  type="number"  min="0" value="0" autocomplete="off">
+              </div>
 
-            <div class="provide-blood">
-                <%bloodProvide.forEach(type => { %>
-                    <label>Take <%= type.quantity %> from blood type <%= type.type %> </label>
-                });    
-            </div>
+              <button type="submit">Provide Blood</button>
+
+          </div>
+      </form>
+      <form action="/Emergency" class="Emergency" method="post">
+        <div class="box-form provide-box emergency-box">
+          <h3>Emergency</h3>
+          <div class="item">
+            <label>Quantity</label>
+            <input  name="bloodAmount"  type="number"  min="0" value="0" autocomplete="off">
+          </div>
+          <button type="submit">Emergency</button>
         </div>
-    </form>
+
+      </form>
+    </div>
+
 </div>
-<form action="/Emergency" class="Emergency" method="post">
-    <button type="submit">Emergency</button>
-</form>
+
 </body>
 </html>
