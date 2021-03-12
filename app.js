@@ -50,30 +50,14 @@ app.get("/", function(req,res){
 });
 
 app.post("/addBlood",async function(req,res){
-  const bloodUnits_Aplus = parseInt(req.body.Aplus);
-  const bloodUnits_Bplus = parseInt(req.body.Bplus);
-  const bloodUnits_ABplus = parseInt(req.body.ABplus);
-  const bloodUnits_Oplus = parseInt(req.body.Oplus);
-  const bloodUnits_Aminus = parseInt(req.body.Aminus);
-  const bloodUnits_Bminus = parseInt(req.body.Bminus);
-  const bloodUnits_ABminus = parseInt(req.body.ABminus);
-  const bloodUnits_Ominus = parseInt(req.body.Ominus);
-  const oldQuantity_Aplus = await Type.findOne({type: "A+"}, 'quantity -_id').exec();
-  const oldQuantity_Bplus = await Type.findOne({type: "B+"}, 'quantity -_id').exec();
-  const oldQuantity_ABplus = await Type.findOne({type: "AB+"}, 'quantity -_id').exec();
-  const oldQuantity_Oplus = await Type.findOne({type: "O+"}, 'quantity -_id').exec();
-  const oldQuantity_Aminus = await Type.findOne({type: "A-"}, 'quantity -_id').exec();
-  const oldQuantity_Bminus = await Type.findOne({type: "B-"}, 'quantity -_id').exec();
-  const oldQuantity_ABminus = await Type.findOne({type: "AB-"}, 'quantity -_id').exec();
-  const oldQuantity_Ominus = await Type.findOne({type: "O-"}, 'quantity -_id').exec();
-  await Type.findOneAndUpdate({type: "A+"}, {quantity: bloodUnits_Aplus + oldQuantity_Aplus.quantity}).exec();
-  await Type.findOneAndUpdate({type: "B+"}, {quantity: bloodUnits_Bplus + oldQuantity_Bplus.quantity}).exec();
-  await Type.findOneAndUpdate({type: "AB+"}, {quantity: bloodUnits_ABplus + oldQuantity_ABplus.quantity}).exec();
-  await Type.findOneAndUpdate({type: "O+"}, {quantity: bloodUnits_Oplus + oldQuantity_Oplus.quantity}).exec();
-  await Type.findOneAndUpdate({type: "A-"}, {quantity: bloodUnits_Aminus + oldQuantity_Aminus.quantity}).exec();
-  await Type.findOneAndUpdate({type: "B-"}, {quantity: bloodUnits_Bminus + oldQuantity_Bminus.quantity}).exec();
-  await Type.findOneAndUpdate({type: "AB-"}, {quantity: bloodUnits_ABminus + oldQuantity_ABminus.quantity}).exec();
-  await Type.findOneAndUpdate({type: "O-"}, {quantity: bloodUnits_Ominus + oldQuantity_Ominus.quantity}).exec();
+  const allBlood = await Type.find({}).exec();
+  var newBloodUnits,oldAmount,bloodType;
+  for(var i=0; i<allBlood.length; i++){
+    newBloodUnits = parseInt(req.body[allBlood[i].name]);
+    oldAmount = allBlood[i].quantity;
+    bloodType = allBlood[i].type;
+    await updateBlood(bloodType,oldAmount,newBloodUnits);
+  }
   const updatedBlood = await Type.find({}).exec();
   res.render("recept_normal",{blood: updatedBlood});
 });
@@ -134,6 +118,10 @@ app.post("/Emergency",async function(req,res){
   await Type.updateOne({type:"O-"},{quantity: oMinus.quantity - unitsToSupply}).exec();
   res.render("bloodList",{blood_list: [oMinus], notEnoughFlag: notEnoughUnits})
 });
+
+async function updateBlood(bloodType,oldAmount,newBloodUnits){
+  await Type.findOneAndUpdate({type: bloodType}, {quantity: oldAmount + newBloodUnits}).exec();
+}
 
 async function bloodSupply(type,amount){
   var amountTaken;
