@@ -1,0 +1,98 @@
+<%- include("partials/header") %>
+
+
+<div class="database">
+  <h2>Database of blood units</h2>
+  <div style="float:left;">
+    <h3>Total: &emsp; <%=database.length%></h3>
+  </div>
+  <div style="float: right;">
+    <form class="" action="/export-database" method="post">
+      <button type="submit" class="btn btn-success" name="button">Export to CSV</button>
+    </form>
+  </div>
+
+  <form class="" action="/database-query" method="post">
+    <div class="row query" style="width:100%;">
+      <div class="col-lg-3">
+        <label for="blood_type" class="form-label">Blood Type</label>
+        <select class="form-control form-control-sm" id="blood_type" name="blood_type">
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+          <option value="All">All</option>
+        </select>
+      </div>
+      <div class="col-lg-3">
+        <label for="gender" class="form-label">Gender</label>
+        <select class="form-control form-control-sm" id="gender" name="gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Both">Both</option>
+        </select>
+      </div>
+      <div class="col-lg-3">
+        <label for="donate_date" class="form-label">Donate Date</label>
+        <input type="date" class="form-control form-control-sm" name="donate_date" value="">
+      </div>
+      <div class="col-lg-2">
+        <label for="smoker" class="form-label">Smoker</label>
+        <select class="form-control form-control-sm" id="smoker" name="smoker">
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+          <option value="Both">Both</option>
+        </select>
+      </div>
+      <div class="col-lg-1 query-item">
+        <button type="submit" class="btn btn-primary" style="width: -webkit-fill-available;" name="button">Find</button>
+      </div>
+    </div>
+  </form>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Donate ID</th>
+        <%if(user.usertype === "admin" || user.usertype === "user"){%>
+          <th scope="col">ID</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Phone Number</th>
+          <th scope="col">Birth Date</th>
+          <th scope="col">Resident</th>
+        <%}%>
+        <th scope="col">Gender</th>
+        <th scope="col">Donate Date</th>
+        <th scope="col">Blood Type</th>
+        <th scope="col">Smoker</th>
+      </tr>
+      </thead>
+    <tbody>
+      <%database.forEach(function(record,i){%>
+        <%var color = i%2 == 0 ? "table-primary" : "table-light";%>
+        <tr class="<%=color%>">
+          <th scope="row"><%=i%></th>
+          <td><%=record._id%></td>
+          <%if(user.usertype === "admin" || user.usertype === "user"){%>
+            <td><%=record.id_donate%></td>
+            <td><%=record.firstname%></td>
+            <td><%=record.lastname%></td>
+            <td><%=record.phone_number%></td>
+            <td><%=record.birthdate%></td>
+            <td><%=record.resident%></td>
+          <%}%>
+          <td><%=record.gender%></td>
+          <td><%=record.donate_date%></td>
+          <td><%=record.bloodType%></td>
+          <td><%=record.isSmoker%></td>
+        </tr>
+      <%});%>
+    </tbody>
+  </table>
+</div>

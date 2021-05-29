@@ -1,0 +1,17 @@
+<%- include("partials/header") %>
+
+<h2 class="headline middle">Results of request: <%=quantity%> blood units of <%=type.type%></h2>
+<label class="middle" style="visibility:<%=notEnoughFlag%>; color:red;" >Cannot Provide All The Blood Units You Requested. due to lack of supply</label>
+
+<div class="result box">
+  <ol>
+    <%for(var i=0; i<bloodunits.length; i++){%>
+      <li><p style="display:inline-block; width:250px"><%=bloodunits[i].id%></p> <p style="display:inline-block;"><%=bloodunits[i].type%></p></li>
+    <%}%>
+  </ol>
+</div>
+<div class="back">
+    <a class="btn btn-primary" href="/user-home" role="button">Back</a>
+</div>
+</body>
+</html>

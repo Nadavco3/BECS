@@ -1,0 +1,24 @@
+<%- include("partials/header") %>
+
+    <h2 class="headline middle">Choose an action</h2>
+    <div class="menu box">
+      <%if(user.usertype === "student" || user.usertype === "admin" || user.usertype === "user"){%>
+        <a class="btn btn-primary" href="/view-database" role="button">View Database</a>
+      <%}%>
+      <%if(user.usertype === "employee" || user.usertype === "admin" || user.usertype === "user" || user.usertype === "none"){%>
+        <a class="btn btn-primary" href="/reception" role="button">Reception</a>
+        <a class="btn btn-primary" href="/provide" role="button">Provide</a>
+        <a class="btn btn-primary" href="/provide-emergency" role="button">Provide In Emergency</a>
+      <%}%>
+      <%if(user.usertype === "admin" || user.usertype === "user"){%>
+        <a class="btn btn-primary" href="/generate" role="button">Generate Data</a>
+        <a class="btn btn-primary" href="/export-log-file" role="button">Export Log File</a>
+      <%}%>
+      <%if(user.usertype === "admin"){%>
+        <a class="btn btn-primary" href="/create-users" role="button">Create Users</a>
+      <%}%>
+
+
+    </div>
+  </body>
+</html>

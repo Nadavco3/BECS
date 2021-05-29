@@ -1,0 +1,49 @@
+<%- include("partials/header") %>
+
+    <h2 class="headline middle" >Reception</h2>
+    <div class="donate-form box">
+      <form class="" action="/addBlood" method="post">
+        <label for="id" class="form-label">ID</label>
+        <input type="text" class="form-control form-control-sm" name="id" value="">
+        <label for="firstname" class="form-label">First Name</label>
+        <input type="text" class="form-control form-control-sm" name="firstname" value="">
+        <label for="lastname" class="form-label">Last Name</label>
+        <input type="text" class="form-control form-control-sm" name="lastname" value="">
+        <label>Gender</label>
+        <input type="radio" id="male" name="gender" value="Male" checked>
+        <label for="gender" class="form-label">Male</label>
+        <input type="radio" id="female" name="gender" value="Female">
+        <label for="gender" class="form-label">Female</label>
+        <br>
+        <br>
+        <label for="birthdate" class="form-label">Birth Date</label>
+        <input type="date" class="form-control form-control-sm" name="birthdate" value="">
+        <label for="phone_number" class="form-label">Phone Number</label>
+        <input type="text" class="form-control form-control-sm" name="phone_number" value="">
+        <label for="resident" class="form-label">Resident</label>
+        <input type="text" class="form-control form-control-sm" name="resident" value="">
+        <label for="blood_type" class="form-label">Blood Type</label>
+        <select class="form-control form-control-sm" id="blood_type" name="blood_type">
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+        </select>
+        <label>Smoker</label>
+        <input type="radio" id="noSmoking" name="smoker" value="No" checked>
+        <label for="noSmoking" class="form-label">No</label>
+        <input type="radio" id="yesSmoking" name="smoker" value="Yes">
+        <label for="yesSmoking" class="form-label">Yes</label>
+        <button type="submit" class="btn btn-primary submit" name="button">Submit</button>
+      </form>
+    </div>
+    <div class="back">
+        <a class="btn btn-primary" href="/user-home" role="button">Back</a>
+    </div>
+
+  </body>
+</html>

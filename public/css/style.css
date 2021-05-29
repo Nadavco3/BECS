@@ -1,8 +1,6 @@
 html{
-    font-size: 30px;
-    font-size: 20px;
-    background-image: url('images/background.jpg');
-    background-size: 100%;
+    /* font-size: 30px;
+    font-size: 20px; */
 }
 h1{
     text-align: center;
@@ -20,6 +18,97 @@ select{
   margin-right: 15px;
   border-radius: 10px;
   border: 2px solid #ccc;
+}
+
+.logout {
+  margin-right: 0px;
+  margin-left: auto;
+  width: fit-content;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+.query{
+  width: 100% !important;
+  display: flex !important;
+  margin-left: 0px !important;
+  padding-right:0px !important;
+}
+
+.query-item {
+  margin-bottom: 0px;
+  margin-top: auto;
+  padding-right: 0px;
+}
+
+.box {
+  width: 30%;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 10px solid;
+  border-color: #9fc3e6;
+}
+
+.login-form input {
+  margin-bottom: 10px;
+}
+
+.menu {
+  display: grid;
+}
+
+.menu a {
+  margin: 20px;
+  padding-top: 25px;
+  /* width: inherit; */
+  height: 100px;
+  font-size: 24px;
+}
+
+.donate-form input {
+  margin-bottom: 5px;
+}
+
+.donate-form input[type="radio"]{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.provide-form input {
+  margin-bottom: 5px;
+}
+
+.donate-form label {
+  font-size: 18px;
+  margin-bottom: 0px;
+  display: inline-block;
+}
+
+.middle {
+  width: fit-content;
+  margin: auto;
+}
+
+.headline{
+  margin-top: 50px;
+}
+
+.submit {
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.back {
+  width: fit-content;
+  margin: auto;
+}
+
+.database {
+  padding: 10px;
 }
 
 .warning {
@@ -133,7 +222,7 @@ select{
 
 }
 
-  button {
+  /* button {
     box-shadow:inset 0px 1px 0px 0px #ffffff;
     background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
     background-color:#ffffff;
@@ -157,7 +246,7 @@ select{
   button:active {
     position:relative;
     top:1px;
-  }
+  } */
   .row{
     margin-left: 140px;
     display: inline-grid;

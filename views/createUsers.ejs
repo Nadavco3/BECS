@@ -1,0 +1,30 @@
+<%- include("partials/header") %>
+
+<h2 class="headline middle" >Create new user</h2>
+<div class="box">
+  <form class="" action="/create-users" method="post">
+    <label for="id" class="form-label">User ID</label>
+    <input type="text" class="form-control form-control-sm" name="id" value="" required>
+    <label for="firstname" class="form-label">First Name</label>
+    <input type="text" class="form-control form-control-sm" name="firstname" value="" required>
+    <label for="lastname" class="form-label">Last Name</label>
+    <input type="text" class="form-control form-control-sm" name="lastname" value="" required>
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control form-control-sm" name="email" value="" required>
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control form-control-sm" name="password" value="" required>
+    <label for="user_type" class="form-label">User Type</label>
+    <select class="form-control form-control-sm" name="user_type">
+      <option value="admin">Admin</option>
+      <option value="employee">Employee</option>
+      <option value="student">Student</option>
+    </select>
+    <button type="submit" class="btn btn-primary submit" name="button">Submit</button>
+  </form>
+</div>
+<div class="back">
+    <a class="btn btn-primary" href="/user-home" role="button">Back</a>
+</div>
+
+</body>
+</html>
